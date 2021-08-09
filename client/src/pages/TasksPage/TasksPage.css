@@ -1,0 +1,16 @@
+.tasks-input-container{
+    display: flex;
+
+}
+.tasks-input-checkbox-true {
+    height: 20px;
+    width: 20px;
+    background-color: grey;
+    cursor: pointer;
+}
+.tasks-input-checkbox-false {
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    cursor: pointer;
+}

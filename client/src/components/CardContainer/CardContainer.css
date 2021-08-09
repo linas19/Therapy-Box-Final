@@ -1,0 +1,23 @@
+.container {
+    border: 2px solid #fee65d;
+    border-radius: 5px;
+    height: 200px;
+    width: 250px;
+    margin: 20px;
+    cursor: pointer;
+    background-color: rgba(245, 245, 245, 0.411);
+}
+.container-title {
+    font-size: 20px;
+    background: #fee65d;
+    text-align: center;
+    padding: 15px;
+}
+.container-not-clickable {
+    border: 2px solid #fee65d;
+    border-radius: 5px;
+    height: 200px;
+    width: 250px;
+    margin: 20px;
+    background-color: rgba(245, 245, 245, 0.411);
+}

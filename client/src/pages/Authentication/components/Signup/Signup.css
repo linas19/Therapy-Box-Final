@@ -1,0 +1,31 @@
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 40vh;
+}
+.signup-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.add-pic-container {
+    height: 30vh;
+}
+.signup-text-email {
+    display: flex;
+    justify-content: center;
+
+}
+.signup-password-confirm {
+    padding-top: 12%;
+    display: flex;
+}
+.signup-left {
+    padding-right: 25%;
+}
+.signup-top {
+    padding-bottom: 15%;
+}

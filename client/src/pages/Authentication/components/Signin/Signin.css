@@ -1,0 +1,18 @@
+.signin-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 40vh;
+}
+.signin-input {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.add-pic-container {
+    height: 30vh;
+}
+.signin-username {
+    padding-right: 25%;
+}

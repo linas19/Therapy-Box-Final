@@ -1,0 +1,14 @@
+.add-button {
+    height:120px;
+    width:200px;
+    background-color: #fee65d4b;
+    border: 2px solid #fee65d; /* Green */
+    font-size: medium;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+.add-container {
+    padding: 15px;
+}

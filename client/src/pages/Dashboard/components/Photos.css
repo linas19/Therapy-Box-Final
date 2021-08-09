@@ -1,0 +1,15 @@
+.dashboard-photo {
+    border: 2px solid yellow;
+    height: 50px;
+    width: 80px;
+
+}
+.dashboard-photo-container {
+    padding-top: 5%;
+    padding-left: 10px;
+}
+.dashboard-photos-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

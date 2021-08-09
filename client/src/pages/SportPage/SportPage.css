@@ -1,0 +1,50 @@
+.sport-input {
+    border-width: 0px;
+    text-align: center;
+    letter-spacing: 0px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background: none;
+    font-size: xx-large;
+}
+.sport-input::placeholder {
+    color: white;
+}
+/* .input-container {
+    width: 50%;
+} */
+.sport-page-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    width: 100%;
+}
+.sport-page-title {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 32px;
+    color: white;
+}
+.sport-page-description {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 10%;
+    text-align: left;
+    font-size: 20px;
+    color: white;
+}
+.sport-page-losers {
+    padding-top: 30px;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.sport-page-loser {
+    display: flex;
+}

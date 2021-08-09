@@ -1,0 +1,12 @@
+.button {
+    height:40px;
+    width:220px;
+    border: none;
+    background-color: #fee65d;
+    border-radius: 100px;
+    font-size: medium;
+    cursor: pointer;
+}
+.button-container {
+    padding: 15px;
+}

@@ -1,0 +1,7 @@
+
+.pie-chart-container {
+    padding-top: 5%;
+    position: relative;
+    display: flex; 
+    justify-content: center;
+}
