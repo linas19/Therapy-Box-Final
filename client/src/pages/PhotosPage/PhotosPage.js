@@ -2,17 +2,20 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import AddPhotosComponent from '../../components/AddPhotosComponent/AddPhotosComponent';
+import './PhotosPage.css'
 
 export default function PhotosPage() {
     const [photos, setPhotos] = useState([])
     const [selectedFile, setSelectedFile] = useState(null);
 
-    const handleFileInput = (e) => {
+    const handleFileInput = async (e) => {
         setSelectedFile(e.target.files[0]);
+        await handleUpload(selectedFile)
     }
 
-    const handleUpload = async (file) => {
-        const formData  = new FormData();
+    const handleUpload = (file) => {
+        const formData = new FormData();
         formData.append('image', file);
 
         axios.post('/api/photos', formData, {
@@ -24,13 +27,14 @@ export default function PhotosPage() {
             .then((response) => {
                 setPhotos([...photos, response.data]);
                 setSelectedFile(null);
+                window.location.reload()
             })
             .catch((error) => {
                 console.log(error, 'Not logged in to get photos')
             })
     }
 
-    useEffect(() => fetchPhotos(), [])
+    useEffect(() => fetchPhotos(), [selectedFile])
     const fetchPhotos = () => {
         axios({
             url: '/api/photos',
@@ -46,24 +50,28 @@ export default function PhotosPage() {
                 console.log(error, 'Not logged in to get photos')
             })
     }
+    const deletePhoto = (id) => {
+        console.log('DELETE id', id)
+    }
 
     return (
-        <div>
-            <div>
-                <div>Photos</div>
+        <div className="photos-page-container">
+            <div className="photos-title">Photos</div>
+            <div className="photos-list">
+                <div>
+                    <AddPhotosComponent onChange={handleFileInput} />
+                    {selectedFile !== null && <button onClick={() => handleUpload(selectedFile)}>Upload image</button>}
+                </div>
                 {photos.length !== 0 &&
-                        photos.map((photos) =>
-                            <div key={photos._id}>
-                                <img src={photos.url} height={280} width={280} alt="Uploaded img"/>
-                                <div>{photos.url}</div>
-                            </div>
-                        )
-                    }
-                <input type="file" onChange={handleFileInput} />
-                <button onClick={() => handleUpload(selectedFile)}>Upload image</button>
+                    photos.map((photos) =>
+                        <div className="photos-list-container" key={photos._id}>
+                            <img className="photos-photo" src={photos.url} height={280} width={280} alt="Uploaded img" onClick={deletePhoto}/>
+                        </div>
+                    )
+                }
             </div>
-
         </div>
+
     )
 }
 

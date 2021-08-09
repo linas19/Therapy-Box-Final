@@ -1,0 +1,31 @@
+.photos-title{
+    width: 100%;
+    text-align: center;
+    padding-top: 10%;
+    font-size: 40px;
+    color: white;
+}
+.photos-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10%;
+}
+.photos-list-container {
+    height:280px;
+    width:280px;
+    padding: 15px;
+}
+.photos-photo {
+    border: 2px solid #fee65d; 
+    cursor: pointer;
+
+}
+.photos-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    width: 100%;
+}

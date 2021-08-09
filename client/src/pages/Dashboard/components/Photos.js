@@ -28,17 +28,17 @@ export default function Photos() {
                         <div className="dashboard-photo-container">
                             <img className="dashboard-photo" src={photos[0].url} alt="S3" />
                         </div>}
-                    {photos[0] &&
+                    {photos[1] &&
                         <div className="dashboard-photo-container">
-                            <img className="dashboard-photo" src={photos[0].url} alt="S3" />
+                            <img className="dashboard-photo" src={photos[1].url} alt="S3" />
                         </div>}
-                    {photos[0] &&
+                    {photos[2] &&
                         <div className="dashboard-photo-container">
-                            <img className="dashboard-photo" src={photos[0].url} alt="S3" />
+                            <img className="dashboard-photo" src={photos[2].url} alt="S3" />
                         </div>}
-                    {photos[0] &&
+                    {photos[3] &&
                         <div className="dashboard-photo-container">
-                            <img className="dashboard-photo" src={photos[0].url} alt="S3" />
+                            <img className="dashboard-photo" src={photos[3].url} alt="S3" />
                         </div>}
                 </div>}
 
