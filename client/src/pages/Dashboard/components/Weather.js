@@ -11,13 +11,13 @@ export default function Weather() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = () => {
       navigator.geolocation.getCurrentPosition(function (position) {
         setLat(Math.round(position.coords.latitude * 10) / 10);
         setLon(Math.round(position.coords.longitude * 10) / 10);
       });
       if(lat !== undefined && lon !== undefined){
-        await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
         .then(res => res.json())
         .then(result => {
           setData(result)
