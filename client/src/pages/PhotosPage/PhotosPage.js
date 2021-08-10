@@ -27,7 +27,6 @@ export default function PhotosPage() {
             .then((response) => {
                 setPhotos([...photos, response.data]);
                 setSelectedFile(null);
-                window.location.reload()
             })
             .catch((error) => {
                 console.log(error, 'Not logged in to get photos')

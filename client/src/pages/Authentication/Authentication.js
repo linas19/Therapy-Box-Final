@@ -28,7 +28,7 @@ export default function Authentication() {
                         <Signup />
                         <div className="link-to-signup">
                             <div className="link-to-signup-text">Already have an account? </div>
-                            <button className="link-to-signup-button" onClick={() => { setSignin(true) }}>Sign up</button>
+                            <button className="link-to-signup-button" onClick={() => { setSignin(true) }}>Sign in</button>
                         </div>
                     </div>
                 )

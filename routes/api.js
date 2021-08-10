@@ -81,14 +81,14 @@ router.get('/sport', (req, res) => {
     
 });
 
-router.get('/todos', (req, res) => {
+router.get('/todos', [middleware.authJwt.verifyToken], (req, res) => {
     Todos.find({})
         .then((data) => {
-            // console.log('Todo Data: ', data)
+            console.log('task Data: ', data)
             res.json(data)
         })
         .catch((error) => {
-            console.log('error', daerrorta)
+            console.log('error', error)
         })
 });
 
