@@ -10,10 +10,6 @@ const loginStateFull = {
 }
 export default function Signin() {
     const [loginState, setLoginState] = useState(loginStateFull)
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    // const resetLoginInputs = () => {
-    //     setLoginState(loginStateFull)
-    // }
     const submitLogin = (e) => {
         e.preventDefault();
         const payload = {
@@ -27,13 +23,10 @@ export default function Signin() {
         })
             .then((response) => {
                 localStorage.setItem('x-access-token', response.data.accessToken)
-                setIsLoggedIn(true)
-                // resetLoginInputs()
                 window.location.reload(true);
             })
             .catch((error) => {
                 console.log(error, 'Not logged in')
-                setIsLoggedIn(false)
             })
     }
     return (

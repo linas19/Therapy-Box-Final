@@ -8,7 +8,7 @@ import Task from './components/Task';
 import './TasksPage.css'
 
 const todoState = {
-    title: 'first',
+    title: '',
     is_completed: false,
 }
 
@@ -36,9 +36,15 @@ export default function TasksPage() {
         console.log(tasks)
     }
     return (
-        <div>
-            {tasks && tasks.map((task)=><Task task={task}/>)}
-            <AddTaskButton onClick={createTask}/>
+        <div className="tasks-page-container">
+            <div className="tasks-page-title">Tasks</div>
+            <div className="tasks-task-container">
+                {tasks && tasks.map((task) => <Task task={task} />)}
+                <div className="task-page-add-btn">
+                    <AddTaskButton onClick={createTask} />
+                </div>
+            </div>
+
         </div>
     )
 }

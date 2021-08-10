@@ -84,7 +84,6 @@ router.get('/sport', (req, res) => {
 router.get('/todos', [middleware.authJwt.verifyToken], (req, res) => {
     Todos.find({})
         .then((data) => {
-            console.log('task Data: ', data)
             res.json(data)
         })
         .catch((error) => {
