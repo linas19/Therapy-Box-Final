@@ -62,7 +62,7 @@ export default function Signup() {
             <AddPictureComponent text="Add picture" />
             <ButtonComponent text="Register" onClick={submit} />
             {signupSuccess && <div>Signed up Successfully</div>}
-            {!signupSuccess && <div>Signed up Incomplete.</div>}
+            {/* {!signupSuccess && <div>Signed up Incomplete.</div>} */}
         </div>
     )
 }
