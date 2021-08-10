@@ -17,11 +17,11 @@ function App() {
       <BrowserRouter>
         <Switch>
           <PublicRoute restricted={true} component={Authentication} path="/" />
-          <PrivateRoute component={Dashboard} path="/dashboard" />
-          <PrivateRoute component={NewsPage} path="/news" />
-          <PrivateRoute component={SportPage} path="/sport" />
-          <PrivateRoute component={TasksPage} path="/tasks" />
-          <PrivateRoute component={PhotosPage} path="/photos" />
+          <PrivateRoute component={Dashboard} path="/dashboard" exact />
+          <PrivateRoute component={NewsPage} path="/news" exact />
+          <PrivateRoute component={SportPage} path="/sport" exact />
+          <PrivateRoute component={TasksPage} path="/tasks" exact />
+          <PrivateRoute component={PhotosPage} path="/photos" exact />
           <PublicRoute component={NotFound} />
         </Switch>
       </BrowserRouter>
