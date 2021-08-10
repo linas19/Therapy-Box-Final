@@ -13,10 +13,10 @@ export default function Weather() {
   useEffect(() => {
     const fetchData = () => {
       navigator.geolocation.getCurrentPosition(function (position) {
-        setLat(Math.round(position.coords.latitude * 10) / 10);
-        setLon(Math.round(position.coords.longitude * 10) / 10);
+        setLat(Math.round(position.coords.latitude));
+        setLon(Math.round(position.coords.longitude));
       });
-      if(lat !== undefined && lon !== undefined){
+      if(Number.isInteger(lat) && Number.isInteger(lon)){
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
         .then(res => res.json())
         .then(result => {
