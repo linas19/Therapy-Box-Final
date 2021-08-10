@@ -2,15 +2,21 @@
 
 import axios from 'axios';
 import React, { useEffect, useState, useCallback } from 'react'
+import Tasks from '../Dashboard/components/Tasks';
+import AddTaskButton from './components/AddTaskButton';
+import Task from './components/Task';
 import './TasksPage.css'
 
-const taskState = {
-    title: 'a',
+const todoList = [{
+    title: 'first',
     is_completed: false,
-}
+}, {
+    title: 'second',
+    is_completed: true,}
+]
 
 export default function TasksPage() {
-    const [tasks, setTasks] = useState([taskState])
+    const [tasks, setTasks] = useState([todoList])
     // const [state, setState] = useState(todoState)
     // const [todo, setTodo] = useState([])
     // const resetUserInputs = () => {
@@ -93,39 +99,18 @@ export default function TasksPage() {
     //     }, [todo]
     //   );
     const createTask = () => {
-        setTasks(tasks => [...tasks, taskState])
+        setTasks(tasks => [...tasks, todoList])
         console.log(tasks)
     }
-    const updateTodo = (index) => {
-        // e.preventDefault()
-        console.log('index')
+    // const updateTodo = (index) => {
+    //     // e.preventDefault()
+    //     console.log('index')
 
-        console.log(index)
-    }
+    //     console.log(index)
+    // }
     return (
         <div>
-            <h1>Tasks</h1>
-            {/* <form>
-                <div>
-                    {todo.length !== 0 &&
-                        todo.map((todo, index) =>
-                            <div key={todo._id}>
-                                <div>{todo.title}</div>
-                                    <input
-                                        id={index}
-                                        name="isGoing"
-                                        type="checkbox"
-                                        checked={todo.is_completed}
-                                        onChange={handleOnChange} /> 
-                            </div>
-                        )
-                    }
-                    <TextField id="standard-basic" label="Enter a task" value={state.ticketName}
-                        onChange={e => setState({ ...state, title: e.target.value })} />
-                    <button onClick={submit}>Create new ticket</button>
-                    <button onClick={log}>Log</button>
-                </div>
-            </form> */}
+            {/* <h1>Tasks</h1>
             {tasks.length !== 0 && tasks.map((task, index) => (
                 <div className="tasks-input-container" key={task._id}>
                     <div>
@@ -135,8 +120,10 @@ export default function TasksPage() {
                     {!task.is_completed && <div className="tasks-input-checkbox-false" onClick={updateTodo(index)}>[-]</div>}
                 </div>
             ))
-            }
-            <button onClick={createTask}>+</button>
+            } */}
+            {/* <button onClick={createTask}>+</button> */}
+            {todoList.map((task)=><Task task={task}/>)}
+            <AddTaskButton onClick={createTask}/>
         </div>
     )
 }

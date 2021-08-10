@@ -1,0 +1,14 @@
+.add-task-button {
+    height:20px;
+    width:284px;
+    background: none;
+    border: none; 
+    cursor: pointer;
+    color: #fee65d;
+    text-align: center;
+    font-size: 150px;
+    font-weight:lighter;
+}
+.add-task-container {
+    padding: 15px;
+}

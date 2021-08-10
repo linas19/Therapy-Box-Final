@@ -9,20 +9,22 @@ export default function Photos() {
         axios({
             url: '/api/photos',
             method: 'GET',
+            headers: {
+                "x-access-token": localStorage.getItem('x-access-token')
+            }
         })
             .then((response) => {
-                console.log('res', response.data)
                 setPhotos(response.data)
             })
             .catch((error) => {
-                console.log(error, 'No photos')
+                console.log(error, 'Not logged in to get photos')
             })
     }
 
     return (
         <div>
-            {!photos && <div>Click here to create your photos list!</div>}
-            {photos &&
+            {photos.length === 0 && <div>Click here to create your photos list!</div>}
+            {photos.length > 0 &&
                 <div className="dashboard-photos-container">
                     {photos[0] &&
                         <div className="dashboard-photo-container">

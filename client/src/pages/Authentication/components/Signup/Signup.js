@@ -33,6 +33,7 @@ export default function Signup() {
             .then(() => {
                 resetUserInputs()
                 setsignupSuccess(true)
+                console.log('Sign up successfully')
             })
             .catch(() => {
                 setsignupSuccess(false)
@@ -53,9 +54,10 @@ export default function Signup() {
                         <div className="signup-top">
                             <InputComponent type="email" value={state.email} placeholder="Email" onChange={e => setState({ ...state, email: e.target.value })} />
                         </div>
-                        {/* <InputComponent type="password" value={confirmPassword} placeholder="Confirm password" onChange={e => setState({ ...confirmPassword, confirmPassword: e.target.value }} /> */}
+                        <InputComponent type="password" value={confirmPassword} placeholder="Confirm password" onChange={e => setConfirmPassword(e.target.value)} />
                     </div>
                 </div>
+                {confirmPassword !== state.password && <div>Please confirm password</div>}
             </div>
             <AddPictureComponent text="Add picture" />
             <ButtonComponent text="Register" onClick={submit} />
