@@ -21,3 +21,7 @@
     margin: 20px;
     background-color: rgba(245, 245, 245, 0.411);
 }
+a {
+    color: black;
+    text-decoration: none;
+}
