@@ -16,12 +16,12 @@ function App() {
     <div style={{ backgroundImage: `url(${background})`, height: '100%',  backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
       <BrowserRouter>
         <Switch>
-          <PublicRoute restricted={true} component={Authentication} path="/" exact />
-          <PrivateRoute component={Dashboard} path="/dashboard" exact />
-          <PrivateRoute component={NewsPage} path="/news" exact />
-          <PrivateRoute component={SportPage} path="/sport" exact />
-          <PrivateRoute component={TasksPage} path="/tasks" exact />
-          <PrivateRoute component={PhotosPage} path="/photos" exact />
+          <PublicRoute restricted={true} component={Authentication} path="/" />
+          <PrivateRoute component={Dashboard} path="/dashboard" />
+          <PrivateRoute component={NewsPage} path="/news" />
+          <PrivateRoute component={SportPage} path="/sport" />
+          <PrivateRoute component={TasksPage} path="/tasks" />
+          <PrivateRoute component={PhotosPage} path="/photos" />
           <PublicRoute component={NotFound} />
         </Switch>
       </BrowserRouter>
