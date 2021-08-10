@@ -16,11 +16,14 @@ export default function Weather() {
         setLat(Math.round(position.coords.latitude * 10) / 10);
         setLon(Math.round(position.coords.longitude * 10) / 10);
       });
-      await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+      if(lat !== undefined && lon !== undefined){
+        await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
         .then(res => res.json())
         .then(result => {
           setData(result)
         });
+      }
+
     }
     fetchData();
   }, [lat, lon])
