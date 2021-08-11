@@ -3,30 +3,21 @@ import React, { useEffect, useState } from 'react'
 import XMLParser from 'react-xml-parser';
 import './News.css'
 export default function News() {
-    const [newsData, setNewsData] = useState('')
-    // useEffect(() => {
-    //     axios.get('/api/news', {
-    //         "Content-Type": "application/xml; charset=utf-8"
-    //     })
-    //         .then(res => {
-    //             const jsonDataFromXml = new XMLParser().parseFromString(res.data);
-    //             setNewsData(jsonDataFromXml)
-    //         })
-    // }, [])
-    useEffect(() => {
+    const [newsData, setNewsData] = useState()
+
+    useEffect(() => fetchNews(), [])
+    const fetchNews = () => {
         axios.get('/api/news')
-            .then(res => {
-                console.log(res.jsonNewsData)
-                // const jsonDataFromXml = new XMLParser().parseFromString(res.data);
-                setNewsData(res.data)
-            })
-    }, [])
+        .then(res => {
+            setNewsData(res.data)
+        })
+    }
     return (
         <div>
-            {newsData.children &&
+            {newsData &&
                 <div>
                     <h2>News headline</h2>
-                    <div className="news-dashboard-title">{newsData.children[0].children[9].children[0].value}</div>
+                    <div className="news-dashboard-title">{newsData.rss.channel[0].item[0].title}</div>
                 </div>
             }
         </div>
