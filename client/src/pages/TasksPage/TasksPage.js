@@ -5,6 +5,8 @@ import React, { useEffect, useState, useCallback } from 'react'
 import AddTaskButton from './components/AddTaskButton';
 import Task from './components/Task';
 import './TasksPage.css'
+import RemoveTaskButton from './components/RemoveTaskButton';
+
 
 const taskState = {
     title: '',
@@ -12,6 +14,8 @@ const taskState = {
 }
 
 export default function TasksPage() {
+    const [deleting, setDeleting] = useState(false)
+
     const [tasks, setTasks] = useState([])
     useEffect(() => fetchTasks(), [])
     const fetchTasks = () => {
@@ -51,17 +55,33 @@ export default function TasksPage() {
             })
         fetchTasks()
     }
-
+    const deleteTask = (taskId) => {
+        axios({
+            url: '/api/todos',
+            method: 'DELETE',
+            data: { _id: taskId },
+            headers: {
+                ["x-access-token"]: localStorage.getItem('x-access-token')
+            }
+        })
+            .then(() => {
+                console.log("Deleted todo")
+                setDeleting(!deleting)
+            })
+            .catch(() => {
+                console.log('Todo data not sent')
+            })
+        fetchTasks()
+    }
     return (
         <div className="tasks-page-container">
             <div className="tasks-page-title">Tasks</div>
             <div className="tasks-task-container">
-                {tasks && tasks.map((task) => <Task task={task} />)}
+                {tasks && tasks.map((task) => <div key={task._id} className="single-task"><Task task={task} /> <span><RemoveTaskButton onClick={() => deleteTask(task._id)}/></span></div> )}
                 <div className="task-page-add-btn">
                     <AddTaskButton onClick={createTask} />
                 </div>
             </div>
-
         </div>
     )
 }

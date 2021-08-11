@@ -38,3 +38,6 @@
 .task-page-add-btn {
     padding-right: 280px;
 }
+.single-task {
+    display: flex;
+}

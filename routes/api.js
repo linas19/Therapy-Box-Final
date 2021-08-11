@@ -120,10 +120,20 @@ router.post('/todos', [middleware.authJwt.verifyToken], (req, res) => {
 });
 
 router.put('/todos', [middleware.authJwt.verifyToken], (req, res) => {
-    console.log('body',req.body.is_completed)
     Todos.findByIdAndUpdate(req.body._id, {is_completed: req.body.is_completed, title: req.body.title})
         .then((data) => {
             console.log('Todo Data: ', data)
+            res.json(data)
+        })
+        .catch((error) => {
+            console.log('error', error)
+        })
+});
+router.delete('/todos', [middleware.authJwt.verifyToken], (req, res) => {
+    console.log('body',req.body._id)
+    Todos.findByIdAndRemove(req.body._id)
+        .then((data) => {
+            console.log('Removed todo ', data)
             res.json(data)
         })
         .catch((error) => {
