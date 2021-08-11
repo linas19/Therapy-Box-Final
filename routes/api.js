@@ -4,6 +4,7 @@ const fetch = require('isomorphic-fetch');
 const aws = require('aws-sdk')
 const multer = require('multer')
 const multerS3 = require('multer-s3')
+const xml2js = require('xml2js');
 
 const config = require("../config/auth.config.js");
 const middleware = require("../middleware/index.js");
@@ -70,7 +71,15 @@ const RSS_URL = `http://feeds.bbci.co.uk/news/rss.xml`
 router.get('/news', (req, res) => {
     fetch(RSS_URL)
     .then(response => response.text())
-    .then(data => res.send(data))
+    .then(data => {
+        xml2js.parseString(data, (err, result) => {
+            if(err) {
+                throw err;
+            }
+            const jsonNewsData = JSON.stringify(result, null, 4)
+            res.send(jsonNewsData)
+        })
+    })
 });
 
 const SPORT_URL = `http://www.football-data.co.uk/mmz4281/1718/I1.csv`
@@ -78,7 +87,6 @@ router.get('/sport', (req, res) => {
     fetch(SPORT_URL)
     .then(response => response.text())
     .then(data => res.send(data))
-    
 });
 
 router.get('/todos', [middleware.authJwt.verifyToken], (req, res) => {

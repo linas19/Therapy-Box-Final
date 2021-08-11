@@ -37,24 +37,6 @@ export default function Task({ task }) {
     const handleOnCheck = () => {
         setIsChecked(!isChecked)
     }
-    // const deleteTask = () => {
-    //     axios({
-    //         url: '/api/todos',
-    //         method: 'DELETE',
-    //         data: { _id: task._id },
-    //         headers: {
-    //             ["x-access-token"]: localStorage.getItem('x-access-token')
-    //         }
-    //     })
-    //         .then(() => {
-    //             console.log("Deleted todo")
-    //             setDeleting(!deleting)
-    //         })
-    //         .catch(() => {
-    //             console.log('Todo data not sent')
-    //         })
-    //     fetchTasks()
-    // }
     useEffect(() => fetchTasks(), [deleting])
     const fetchTasks = () => {
         axios({

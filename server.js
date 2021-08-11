@@ -20,10 +20,6 @@ require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 app.use('/api', routes)
 
-// app.get("/", (req, res) => {
-//   res.json({ message: "Welcome to Linas application." });
-// });
-
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
@@ -47,6 +43,12 @@ db.mongoose
     process.exit();
   });
 
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'))
-}
+  const path = require("path");
+
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'))
+  
+    app.all('*', (req, res) => {
+      res.sendFile(path.join(__dirname, './client/build/index.html'));
+    });
+  }

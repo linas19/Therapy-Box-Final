@@ -4,13 +4,21 @@ import XMLParser from 'react-xml-parser';
 import './News.css'
 export default function News() {
     const [newsData, setNewsData] = useState('')
+    // useEffect(() => {
+    //     axios.get('/api/news', {
+    //         "Content-Type": "application/xml; charset=utf-8"
+    //     })
+    //         .then(res => {
+    //             const jsonDataFromXml = new XMLParser().parseFromString(res.data);
+    //             setNewsData(jsonDataFromXml)
+    //         })
+    // }, [])
     useEffect(() => {
-        axios.get('/api/news', {
-            "Content-Type": "application/xml; charset=utf-8"
-        })
+        axios.get('/api/news')
             .then(res => {
-                const jsonDataFromXml = new XMLParser().parseFromString(res.data);
-                setNewsData(jsonDataFromXml)
+                console.log(res.jsonNewsData)
+                // const jsonDataFromXml = new XMLParser().parseFromString(res.data);
+                setNewsData(res.data)
             })
     }, [])
     return (

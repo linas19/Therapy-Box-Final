@@ -12,7 +12,7 @@ export default function Weather() {
 
   useEffect(() => {
     const fetchData = () => {
-      navigator.geolocation.getCurrentPosition(function (position) {
+      navigator.geolocation.getCurrentPosition((position) => {
         setLat(Math.round(position.coords.latitude));
         setLon(Math.round(position.coords.longitude));
       });
@@ -23,7 +23,6 @@ export default function Weather() {
           setData(result)
         });
       }
-
     }
     fetchData();
   }, [lat, lon])

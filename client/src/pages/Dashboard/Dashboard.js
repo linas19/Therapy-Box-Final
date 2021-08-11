@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CardContainer from '../../components/CardContainer/CardContainer';
 import './Dashboard.css'
 import { logout } from '../../utils';
@@ -19,19 +19,23 @@ const buttonLogout = () => {
 
 export default function Dashboard() {
     const [username, setUsername] = useState('')
-    axios({
-        url: 'api/currentUser',
-        method: 'GET',
-        headers: {
-            ["x-access-token"]: localStorage.getItem('x-access-token')
-        }
-    })
-        .then((response) => {
-            setUsername(response.data.username)
+    useEffect(() => fetchUser(), [])
+    const fetchUser = () => {
+        axios({
+            url: 'api/currentUser',
+            method: 'GET',
+            headers: {
+                ["x-access-token"]: localStorage.getItem('x-access-token')
+            }
         })
-        .catch((error) => {
-            console.log(error, 'Not logged in')
-        })
+            .then((response) => {
+                setUsername(response.data.username)
+            })
+            .catch((error) => {
+                console.log(error, 'Not logged in')
+            })
+    }
+
     return (
         <div className="dashboard-container">
             <div className="dashboard-top">
