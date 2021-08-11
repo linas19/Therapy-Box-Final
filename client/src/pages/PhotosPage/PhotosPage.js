@@ -66,7 +66,6 @@ export default function PhotosPage() {
                     photos.map((photos) =>
                         <div className="photos-list-container" key={photos._id}>
                             <div style={{backgroundImage: `url(${photos.url})`,backgroundRepeat: "no-repeat",backgroundSize: "280px", backgroundPosition: "center", height: "280px", width: "280px", border: "solid yellow 2px"}}></div>
-                            {/* <img className="photos-photo" src={photos.url} height={280} width={280} alt="Uploaded img" onClick={deletePhoto}/> */}
                         </div>
                     )
                 }

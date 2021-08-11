@@ -1,8 +1,8 @@
 .add-button {
-    height:120px;
-    width:200px;
+    height: 90px;
+    width:150px;
     background-color: #fee65d4b;
-    border: 2px solid #fee65d; /* Green */
+    border: 2px solid #fee65d;
     font-size: medium;
     cursor: pointer;
     color: white;
@@ -13,13 +13,6 @@
     padding: 15px;
 }
 .add-button:hover {
-    height:120px;
-    width:200px;
-    background-color: #fee65d4b;
-    border: 2px solid #fff7c6; /* Green */
-    font-size: medium;
-    cursor: pointer;
-    color: white;
-    text-align: center;
-    font-size: 16px;
+    background-color: #fee65dc2;
+    border: 2px solid #fff7c6;
 }
