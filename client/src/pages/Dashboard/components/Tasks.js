@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import DashboardTasksComponent from '../../../components/DashboardTasksComponent/DashboardTasksComponent'
 export default function Tasks() {
     const [tasks, setTasks] = useState([])
     useEffect(() => fetchTodos(), [])
@@ -23,14 +24,20 @@ export default function Tasks() {
         <div>
             {tasks.length === 0 && <div>Click here to create your task list!</div>}
             {tasks.length > 0 &&
-                <div><span>{tasks[0].title}</span><input type="checkbox" checked={tasks[0].is_completed} /></div>
-            }
-            {tasks.length > 1 &&
-                <div><span>{tasks[1].title}</span><input type="checkbox" checked={tasks[1].is_completed} /></div>
-            }
-            {tasks.length > 2 &&
                 <div>
-                    <span>{tasks[2].title}</span><input type="checkbox" checked={tasks[2].is_completed} /></div>
+                    {tasks[0] &&
+                        <DashboardTasksComponent text={tasks[0].title} checked={tasks[0].is_completed} />
+
+                    }
+                    {tasks[1] &&
+                        <DashboardTasksComponent text={tasks[1].title} checked={tasks[1].is_completed} />
+
+                    }
+                    {tasks[2] &&
+                        <DashboardTasksComponent text={tasks[2].title} checked={tasks[2].is_completed} />
+
+                    }
+                </div>
             }
         </div>
     )

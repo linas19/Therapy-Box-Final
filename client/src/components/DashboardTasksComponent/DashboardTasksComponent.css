@@ -1,0 +1,31 @@
+
+input[type='checkbox']:checked {
+    background-color: white;
+  }
+  input[type='checkbox']:checked:after {
+    content: '\2713';
+    color:grey;
+  }
+  input[type='checkbox']{
+    background-color: white;
+
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    width: 20px !important;
+    height: 20px !important;
+    appearance:none;
+    border-radius:10%;
+    border: 1px solid #fee65d;
+    box-shadow: none;
+    font-size: 1em;
+  }
+
+.dashboard-tasks-container {
+    padding: 5px;
+    display: flex;
+    justify-content:space-between;
+}
+.dashboard-tasks-text {
+    text-decoration: underline;
+}

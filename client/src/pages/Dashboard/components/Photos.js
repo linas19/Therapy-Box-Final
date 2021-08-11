@@ -28,19 +28,19 @@ export default function Photos() {
                 <div className="dashboard-photos-container">
                     {photos[0] &&
                         <div className="dashboard-photo-container">
-                            <img className="dashboard-photo" src={photos[0].url} alt="S3" />
+                            <div style={{backgroundImage: `url(${photos[0].url})`,backgroundRepeat: "no-repeat",backgroundSize: "80px", backgroundPosition: "center", height: "50px", width: "80px", border: "solid yellow 2px"}}></div>
                         </div>}
                     {photos[1] &&
                         <div className="dashboard-photo-container">
-                            <img className="dashboard-photo" src={photos[1].url} alt="S3" />
+                            <div style={{backgroundImage: `url(${photos[1].url})`,backgroundRepeat: "no-repeat",backgroundSize: "80px", backgroundPosition: "center", height: "50px", width: "80px", border: "solid yellow 2px"}}></div>
                         </div>}
                     {photos[2] &&
                         <div className="dashboard-photo-container">
-                            <img className="dashboard-photo" src={photos[2].url} alt="S3" />
+                            <div style={{backgroundImage: `url(${photos[2].url})`,backgroundRepeat: "no-repeat",backgroundSize: "80px", backgroundPosition: "center", height: "50px", width: "80px", border: "solid yellow 2px"}}></div>
                         </div>}
                     {photos[3] &&
                         <div className="dashboard-photo-container">
-                            <img className="dashboard-photo" src={photos[3].url} alt="S3" />
+                            <div style={{backgroundImage: `url(${photos[3].url})`,backgroundRepeat: "no-repeat",backgroundSize: "80px", backgroundPosition: "center", height: "50px", width: "80px", border: "solid yellow 2px"}}></div>
                         </div>}
                 </div>}
 

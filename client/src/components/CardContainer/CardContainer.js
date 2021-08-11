@@ -4,7 +4,7 @@ import './CardContainer.css'
 
 export default function CardContainer({ clickable, link, title, children }) {
     return (
-        <div>
+        <div className="card">
             {
                 clickable &&
                 <div className="container">

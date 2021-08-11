@@ -7,6 +7,15 @@
     color: white;
     text-align: center;
 }
+.add-photos-button:hover {
+  height:284px;
+  width:284px;
+  background-color: #8d866183;
+  border: 2px solid #fff7cd; 
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
 .add-photos-container {
     padding: 15px;
 }
