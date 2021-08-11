@@ -9,3 +9,7 @@
     font-size: large;
     color: whitesmoke;
 }
+.new-task-container {
+    display: flex;
+    align-items: center;
+}

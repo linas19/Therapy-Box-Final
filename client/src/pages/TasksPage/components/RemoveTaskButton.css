@@ -1,0 +1,8 @@
+.remove-task-button {
+    cursor: pointer;
+    color: red;
+    text-align: center;
+    font-weight:bolder;
+    background: none;
+    border: none;
+}

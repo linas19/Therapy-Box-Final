@@ -2,20 +2,19 @@
 
 import axios from 'axios';
 import React, { useEffect, useState, useCallback } from 'react'
-import Tasks from '../Dashboard/components/Tasks';
 import AddTaskButton from './components/AddTaskButton';
 import Task from './components/Task';
 import './TasksPage.css'
 
-const todoState = {
+const taskState = {
     title: '',
     is_completed: false,
 }
 
 export default function TasksPage() {
     const [tasks, setTasks] = useState([])
-    useEffect(() => fetchTodos(), [])
-    const fetchTodos = () => {
+    useEffect(() => fetchTasks(), [])
+    const fetchTasks = () => {
         axios({
             url: '/api/todos',
             method: 'GET',
@@ -32,9 +31,27 @@ export default function TasksPage() {
             })
     }
     const createTask = () => {
-        setTasks(tasks => [...tasks, todoState])
-        console.log(tasks)
+        const payload = {
+            title: '',
+            is_completed: false,
+        };
+        axios({
+            url: '/api/todos',
+            method: 'POST',
+            data: payload,
+            headers: {
+                ["x-access-token"]: localStorage.getItem('x-access-token')
+            }
+        })
+            .then(() => {
+                console.log('Posted todo')
+            })
+            .catch(() => {
+                console.log('Todo data not sent')
+            })
+        fetchTasks()
     }
+
     return (
         <div className="tasks-page-container">
             <div className="tasks-page-title">Tasks</div>

@@ -33,7 +33,7 @@ const uploadS3 = multer({
   })
 })
 
-router.get('/currentUser', (req, res) => {
+router.get('/currentUser', [middleware.authJwt.verifyToken], (req, res) => {
     let token = req.headers["x-access-token"];
     const decoded = jwt.verify(token, config.secret);
     User.findById(decoded.id)
@@ -45,7 +45,7 @@ router.get('/currentUser', (req, res) => {
         })
 });
 
-router.put('/currentUser', (req, res) => {
+router.put('/currentUser', [middleware.authJwt.verifyToken], (req, res) => {
     console.log('body',req.body.winning_team)
     let token = req.headers["x-access-token"];
     const decoded = jwt.verify(token, config.secret);
@@ -82,7 +82,7 @@ router.get('/sport', (req, res) => {
 });
 
 router.get('/todos', [middleware.authJwt.verifyToken], (req, res) => {
-    Todos.find({})
+    Todos.find({ owner_id: req.userId})
         .then((data) => {
             res.json(data)
         })
@@ -91,25 +91,37 @@ router.get('/todos', [middleware.authJwt.verifyToken], (req, res) => {
         })
 });
 
-router.post('/todos', (req, res) => {
-    console.log('BODY: ', req.body)
-    const data = req.body;
-    const newTodo = new Todos(data);
-    newTodo.save((error) => {
-        if (error) {
-            console.log(error)
+router.post('/todos', [middleware.authJwt.verifyToken], (req, res) => {
+    const newTodo = new Todos({
+        is_completed: req.body.is_completed,
+        title: req.body.title,
+        owner_id: req.userId
+    });
+    newTodo.save((todoSaveError) => {
+        if (todoSaveError) {
             res.status(500).json({ msg: 'Sorry, internal server error' });
         } else {
-            res.json({
-                msg: 'Your todo data was saved!!!'
-            })
+            User.findById(req.userId)
+                .then((userById) => {
+                    userById.todos.push(newTodo);
+                    userById.save((userUpdateError) => {
+                        if (userUpdateError) {
+                            res.status(500).json({ msg: 'Sorry, internal server error' });
+                        }
+                        res.send(newTodo);
+                    });
+                })
+                .catch((error) => {
+                    console.log('error', error);
+                    res.status(500).json({ msg: 'Sorry, internal server error' });
+                })
         }
     })
 });
 
-router.put('/todos', (req, res) => {
+router.put('/todos', [middleware.authJwt.verifyToken], (req, res) => {
     console.log('body',req.body.is_completed)
-    Todos.findByIdAndUpdate(req.body._id, {is_completed: req.body.is_completed})
+    Todos.findByIdAndUpdate(req.body._id, {is_completed: req.body.is_completed, title: req.body.title})
         .then((data) => {
             console.log('Todo Data: ', data)
             res.json(data)
@@ -129,7 +141,7 @@ router.get(
             res.json(data)
         })
         .catch((error) => {
-            console.log('error', daerrorta)
+            console.log('error', error)
         })
 });
 
