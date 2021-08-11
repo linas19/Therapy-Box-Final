@@ -13,7 +13,6 @@ export default function Tasks() {
             }
         })
             .then((response) => {
-                console.log('response:', response.data)
                 setTasks(response.data)
             })
             .catch((error) => {

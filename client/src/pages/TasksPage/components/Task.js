@@ -65,7 +65,7 @@ export default function Task({ task }) {
             }
         })
             .then((response) => {
-                console.log('response:', response.data)
+                console.log('Fetched tasks:', response.data)
             })
             .catch((error) => {
                 console.log(error, 'Not logged in to get tasks')

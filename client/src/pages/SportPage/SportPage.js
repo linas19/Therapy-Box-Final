@@ -9,7 +9,7 @@ export default function SportPage() {
     const [inputSelectedTeam, setInputSelectedTeam] = useState('')
     const [sportData, setSportData] = useState('')
     const [losingTeamState, setLosingTeamState] = useState([])
-    
+
     useEffect(() => {
         const fetchData = async () => {
             axios.get('/api/sport')
@@ -20,7 +20,7 @@ export default function SportPage() {
         }
         fetchData()
     }, [])
-    useEffect(() => getLosingTeams(),[inputSelectedTeam, sportData])
+    useEffect(() => getLosingTeams(), [inputSelectedTeam, sportData])
     useEffect(() => {
         const fetchSelectedTeam = () => {
             axios({
@@ -31,7 +31,6 @@ export default function SportPage() {
                 }
             })
                 .then((response) => {
-                    console.log('winning: ',response.data.winning_team)
                     setInputSelectedTeam(response.data.winning_team)
                 })
                 .catch((error) => {
@@ -79,21 +78,24 @@ export default function SportPage() {
     }
     return (
         <div className="sport-page-container">
-            <PageHeading text="Champion's League Challenge"/>
+            <PageHeading text="Champion's League Challenge" />
             <div className="sport-input-container">
                 <input className="sport-input" type="text" value={inputSelectedTeam} placeholder="Input winning team" onChange={e => setInputSelectedTeam(e.target.value)} />
-                <ButtonComponent text="Click to confirm selection" onClick={updateUserWinningTeam}/>
+                <ButtonComponent text="Click to follow team" onClick={updateUserWinningTeam} />
             </div>
-            <div className="sport-page-description">These teams you won against:
-                <div className="sport-page-losers">
-                    {losingTeamState && losingTeamState.map((x, index) =>
-                        <div className="sport-page-loser" key={index}>
-                            <div>Team {index+1}:</div>
-                            <div>{x}</div>
-                        </div>
-                    )}
-                </div>
-            </div>
+            {losingTeamState.length === 0 && <div>Enter team name to get data on the team!</div>}
+            {losingTeamState.length !== 0 &&
+                <div>
+                    <div className="sport-page-description">These teams {inputSelectedTeam} won against: </div>
+                    <div className="loser-list">
+                        {losingTeamState.length !== 0 && losingTeamState.map((x, index) =>
+                            <div className="sport-page-loser" key={index}>
+                                <div>Team {index + 1}:</div>
+                                <div>{x}</div>
+                            </div>
+                        )}
+                    </div>
+                </div>}
         </div>
     )
 }

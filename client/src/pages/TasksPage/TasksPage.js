@@ -17,9 +17,9 @@ const taskState = {
 
 export default function TasksPage() {
     const [deleting, setDeleting] = useState(false)
-
+    const [addedTask, setAddedTask] = useState(false)
     const [tasks, setTasks] = useState([])
-    useEffect(() => fetchTasks(), [])
+    useEffect(() => fetchTasks(), [deleting, addedTask])
     const fetchTasks = () => {
         axios({
             url: '/api/todos',
@@ -29,7 +29,6 @@ export default function TasksPage() {
             }
         })
             .then((response) => {
-                console.log('response:', response.data)
                 setTasks(response.data)
             })
             .catch((error) => {
@@ -51,6 +50,7 @@ export default function TasksPage() {
         })
             .then(() => {
                 console.log('Posted todo')
+                setAddedTask(!addedTask)
             })
             .catch(() => {
                 console.log('Todo data not sent')
