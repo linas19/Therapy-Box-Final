@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Papa from 'papaparse'
 import './SportPage.css'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent';
+import PageHeading from '../../components/PageHeading/PageHeading';
 
 export default function SportPage() {
     const [inputSelectedTeam, setInputSelectedTeam] = useState('')
@@ -78,7 +79,7 @@ export default function SportPage() {
     }
     return (
         <div className="sport-page-container">
-            <div className="sport-page-title">Champion's League Challenge</div>
+            <PageHeading text="Champion's League Challenge"/>
             <div className="sport-input-container">
                 <input className="sport-input" type="text" value={inputSelectedTeam} placeholder="Input winning team" onChange={e => setInputSelectedTeam(e.target.value)} />
                 <ButtonComponent text="Click to confirm selection" onClick={updateUserWinningTeam}/>
@@ -93,8 +94,6 @@ export default function SportPage() {
                     )}
                 </div>
             </div>
-
-
         </div>
     )
 }

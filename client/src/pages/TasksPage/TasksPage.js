@@ -6,7 +6,9 @@ import AddTaskButton from './components/AddTaskButton';
 import Task from './components/Task';
 import './TasksPage.css'
 import RemoveTaskButton from './components/RemoveTaskButton';
-
+import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
+import BackButton from '../../components/BackButton/BackButton';
+import PageHeading from '../../components/PageHeading/PageHeading';
 
 const taskState = {
     title: '',
@@ -75,9 +77,9 @@ export default function TasksPage() {
     }
     return (
         <div className="tasks-page-container">
-            <div className="tasks-page-title">Tasks</div>
+            <PageHeading text="Tasks"/>
             <div className="tasks-task-container">
-                {tasks && tasks.map((task) => <div key={task._id} className="single-task"><Task task={task} /> <span><RemoveTaskButton onClick={() => deleteTask(task._id)}/></span></div> )}
+                {tasks && tasks.map((task) => <div key={task._id} className="single-task"><Task task={task} /> <span><RemoveTaskButton onClick={() => deleteTask(task._id)} /></span></div>)}
                 <div className="task-page-add-btn">
                     <AddTaskButton onClick={createTask} />
                 </div>

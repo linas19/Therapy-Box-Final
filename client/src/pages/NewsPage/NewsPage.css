@@ -1,17 +1,14 @@
 
 .news-container {
-    display: flex;
-    justify-content: center;
     height: 100vh;
     text-align: center;
-    display: flex;
     width: 100%;
 }
 .news-image {
     margin-top: 5%;
-    height: 300px;
+    height: 200px;
+    width: 400px;
     border: 2px solid #fee65d;
-
 }
 .news-page-title {
     padding-top: 2%;
@@ -33,6 +30,9 @@
     color: white;
     text-align: left;
 }
-.news-image {
-
+.news-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
