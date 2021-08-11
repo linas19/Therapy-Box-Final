@@ -3,6 +3,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import AddPhotosComponent from '../../components/AddPhotosComponent/AddPhotosComponent';
+import PageHeading from '../../components/PageHeading/PageHeading';
 import './PhotosPage.css'
 
 export default function PhotosPage() {
@@ -55,7 +56,7 @@ export default function PhotosPage() {
 
     return (
         <div className="photos-page-container">
-            <div className="photos-title">Photos</div>
+            <PageHeading  text="Photos"/>
             <div className="photos-list">
                 <div>
                     <AddPhotosComponent onChange={handleFileInput} />
@@ -64,7 +65,8 @@ export default function PhotosPage() {
                 {photos.length !== 0 &&
                     photos.map((photos) =>
                         <div className="photos-list-container" key={photos._id}>
-                            <img className="photos-photo" src={photos.url} height={280} width={280} alt="Uploaded img" onClick={deletePhoto}/>
+                            <div style={{backgroundImage: `url(${photos.url})`,backgroundRepeat: "no-repeat",backgroundSize: "280px", backgroundPosition: "center", height: "280px", width: "280px", border: "solid yellow 2px"}}></div>
+                            {/* <img className="photos-photo" src={photos.url} height={280} width={280} alt="Uploaded img" onClick={deletePhoto}/> */}
                         </div>
                     )
                 }

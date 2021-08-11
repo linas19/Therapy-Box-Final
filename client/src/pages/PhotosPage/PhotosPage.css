@@ -23,7 +23,6 @@
 .photos-page-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     height: 100vh;
     text-align: center;
     display: flex;
