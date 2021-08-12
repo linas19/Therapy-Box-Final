@@ -19,13 +19,12 @@ const buttonLogout = () => {
 
 export default function Dashboard() {
     const [username, setUsername] = useState('')
-    useEffect(() => fetchUser(), [])
     const fetchUser = () => {
         axios({
             url: 'api/currentUser',
             method: 'GET',
             headers: {
-                ["x-access-token"]: localStorage.getItem('x-access-token')
+                "x-access-token": localStorage.getItem('x-access-token')
             }
         })
             .then((response) => {
@@ -35,6 +34,7 @@ export default function Dashboard() {
                 console.log(error, 'Not logged in')
             })
     }
+    useEffect(() => fetchUser(), [])
 
     return (
         <div className="dashboard-container">
@@ -45,19 +45,19 @@ export default function Dashboard() {
             </div>
             <div className="card-container">
                 <CardContainer title="Weather" clickable={false}>
-                    <Weather />
+                    {/* <Weather /> */}
                 </CardContainer>
                 <CardContainer title="News" link="/news" clickable={true}>
-                    <News />
+                    {/* <News /> */}
                 </CardContainer>
                 <CardContainer title="Sport" link="/sport" clickable={true}>
-                    <Sport />
+                    {/* <Sport /> */}
                 </CardContainer>
                 <CardContainer title="Photos" link="/photos" clickable={true}>
-                    <Photos />
+                    {/* <Photos /> */}
                 </CardContainer>
                 <CardContainer title="Tasks" link="/tasks" clickable={true}>
-                    <Tasks />
+                    {/* <Tasks /> */}
                 </CardContainer>
                 <CardContainer title="Clothes">
                     <Clothes />

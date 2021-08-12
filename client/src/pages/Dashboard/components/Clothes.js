@@ -4,15 +4,16 @@ import { Pie } from 'react-chartjs-2';
 import './Clothes.css'
 
 export default function Clothes() {
-    const [clothesData, setClothesData] = useState()
-    const [clotheLabels, setClotheLabels] = useState([])
-    const [clotheValues, setClotheValues] = useState([])
+    const [clothesDataDone, setClothesDataDone] = useState({
+        labels: '',
+        values: null
+    })
     const data = {
-        labels: clotheLabels,
+        labels: clothesDataDone.labels,
         datasets: [
             {
                 label: '# of Votes',
-                data: clotheValues,
+                data: clothesDataDone.values,
                 backgroundColor: [
                     'black',
                     'green',
@@ -35,40 +36,38 @@ export default function Clothes() {
             }
         }
     }
-    useEffect(() => {
-        fetchData()
-    }, [clothesData])
-    const fetchData = () => {
-        if (!clothesData) {
-            axios.get('/api/clothes')
-                .then(res => {
-                    // console.log('res', res.data.payload)
-                    setClothesData(res.data.payload)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        } else {
-            createChart()
-        }
-    }
-    const createChart = () => {
-        if (clothesData) {
+    const createChart =
+        (data) => {
+            console.log('data:', data)
             const counts = {};
-            clothesData.forEach((x) => { counts[x] = (counts[x] || 0) + 1; });
-            let result = clothesData.map(a => a.clothe);
-            result.forEach((x) => { counts[x] = (counts[x] || 0) + 1; });
+            data.forEach((x) => { counts[x] = (counts[x] || 0) + 1; });
+            let result = data.map(a => a.clothe);
+            result.forEach((x) => { counts[x] = (counts[x] || 0) + 1 });
             const labels = Object.keys(counts)
             const values = Object.values(counts)
             labels.shift()
             values.shift()
-            setClotheLabels(labels)
-            setClotheValues(values)
+            const updateClothesData = { labels: labels, values: values }
+            setClothesDataDone(updateClothesData)
         }
-    }
+
+    useEffect(() => {
+        const fetchData = () => {
+            axios.get('/api/clothes')
+                .then(res => {
+                    console.log('resL', res.data.payload)
+                    createChart(res.data.payload)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        fetchData()
+    }, [setClothesDataDone])
+
     return (
-            <div className="pie-chart-container">
-                <Pie data={data} options={options} height={120} width={120} />
-            </div>
+        <div className="pie-chart-container">
+            <Pie data={data} options={options} height={120} width={120} />
+        </div>
     )
 }

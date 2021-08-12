@@ -76,7 +76,7 @@ export default function Signup() {
             {selectedFile !== null && <button onClick={() => handleUpload(selectedFile)}>Upload image</button>}
             <ButtonComponent text="Register" onClick={submit} />
             {signupSuccess && <div>Signed up Successfully</div>}
-            <img src={imageState.file} />
+            <img src={imageState.file} alt="input IMG"/>
             {/* {!signupSuccess && <div>Signed up Incomplete.</div>} */}
         </div>
     )

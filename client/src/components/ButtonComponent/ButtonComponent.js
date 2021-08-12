@@ -1,6 +1,5 @@
 import React from 'react'
 import './ButtonComponent.css'
-import { Link } from 'react-router-dom'
 
 export default function ButtonComponent({ text, onClick }) {
     return (
