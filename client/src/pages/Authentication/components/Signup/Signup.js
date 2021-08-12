@@ -16,7 +16,6 @@ export default function Signup() {
     const resetUserInputs = () => {
         setState(userState)
     }
-    const [signupSuccess, setsignupSuccess] = useState()
     const submit = (e) => {
         e.preventDefault();
         const payload = {
@@ -31,11 +30,9 @@ export default function Signup() {
         })
             .then(() => {
                 resetUserInputs()
-                setsignupSuccess(true)
                 console.log('Sign up successfully')
             })
             .catch(() => {
-                setsignupSuccess(false)
                 console.log('Sign up failed')
             })
     }
@@ -58,12 +55,7 @@ export default function Signup() {
                 </div>
                 {confirmPassword !== state.password && <div>Please confirm password</div>}
             </div>
-            {/* <AddPictureComponent text="Add picture" onChange={handleFileInput}/> */}
-            {/* {selectedFile !== null && <button onClick={() => handleUpload(selectedFile)}>Upload image</button>} */}
             <ButtonComponent text="Register" onClick={submit} />
-            {signupSuccess && <div>Signed up Successfully</div>}
-            {/* <img src={imageState.file} alt="input IMG"/> */}
-            {/* {!signupSuccess && <div>Signed up Incomplete.</div>} */}
         </div>
     )
 }
