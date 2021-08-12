@@ -31,9 +31,9 @@ export default function Weather() {
     <div>
       <div className="weather-top">
         <div className="weather-icon-div">
-          {data.weather && data.weather[0].main === "Rain" && <img className="weather-icon" src={rainIcon} alt={"Rain"} />}
-          {data.weather && data.weather[0].main === "Clear" && <img className="weather-icon" src={clearIcon} />}
-          {data.weather && data.weather[0].main === "Clouds" && <img className="weather-icon" src={cloudIcon} alt={"Clouds"} />}
+          {data.weather && data.weather[0].main === "Rain" && <img className="weather-icon" src={rainIcon} alt="" />}
+          {data.weather && data.weather[0].main === "Clear" && <img className="weather-icon" src={clearIcon} alt=""/>}
+          {data.weather && data.weather[0].main === "Clouds" && <img className="weather-icon" src={cloudIcon} alt="" />}
         </div>
         <div>
           <div className="weather-temperature">

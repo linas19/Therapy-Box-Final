@@ -45,19 +45,19 @@ export default function Dashboard() {
             </div>
             <div className="card-container">
                 <CardContainer title="Weather" clickable={false}>
-                    {/* <Weather /> */}
+                    <Weather />
                 </CardContainer>
                 <CardContainer title="News" link="/news" clickable={true}>
-                    {/* <News /> */}
+                    <News />
                 </CardContainer>
                 <CardContainer title="Sport" link="/sport" clickable={true}>
-                    {/* <Sport /> */}
+                    <Sport />
                 </CardContainer>
                 <CardContainer title="Photos" link="/photos" clickable={true}>
-                    {/* <Photos /> */}
+                    <Photos />
                 </CardContainer>
                 <CardContainer title="Tasks" link="/tasks" clickable={true}>
-                    {/* <Tasks /> */}
+                    <Tasks />
                 </CardContainer>
                 <CardContainer title="Clothes">
                     <Clothes />

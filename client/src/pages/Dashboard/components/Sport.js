@@ -8,7 +8,7 @@ export default function Sport() {
         url: 'api/currentUser',
         method: 'GET',
         headers: {
-            ["x-access-token"]: localStorage.getItem('x-access-token')
+            "x-access-token": localStorage.getItem('x-access-token')
         }
     })
         .then((response) => {

@@ -9,7 +9,7 @@ export default function Tasks() {
             url: '/api/todos',
             method: 'GET',
             headers: {
-                ["x-access-token"]: localStorage.getItem('x-access-token')
+                "x-access-token": localStorage.getItem('x-access-token')
             }
         })
             .then((response) => {

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import XMLParser from 'react-xml-parser';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import './NewsPage.css'
 

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import XMLParser from 'react-xml-parser';
 import './News.css'
 export default function News() {
     const [newsData, setNewsData] = useState()
