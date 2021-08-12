@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import InputComponent from '../../../../components/InputComponent/InputComponent';
 import ButtonComponent from '../../../../components/ButtonComponent/ButtonComponent';
 import './Signup.css'
-import AddPictureComponent from '../../../../components/AddPictureComponent/AddPictureComponent';
 
 const axios = require('axios');
 const userState = {
@@ -12,24 +11,11 @@ const userState = {
 }
 
 export default function Signup() {
-    // const [selectedFile, setSelectedFile] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState('')
     const [state, setState] = useState(userState);
-    // const [imageState, setImageState] = useState({})
     const resetUserInputs = () => {
         setState(userState)
     }
-    // const handleFileInput = async (e) => {
-    //     console.log(e.target.files)
-    //     setImageState({file: URL.createObjectURL(e.target.files[0])})
-    //     setSelectedFile(e.target.files[0]);
-    //     await handleUpload(selectedFile)
-    // }
-
-    // const handleUpload = (file) => {
-    //     const formData = new FormData();
-    //     formData.append('image', file);
-    // }
     const [signupSuccess, setsignupSuccess] = useState()
     const submit = (e) => {
         e.preventDefault();

@@ -9,7 +9,7 @@ import Clothes from './components/Clothes';
 import Sport from './components/Sport';
 import Tasks from './components/Tasks';
 import Photos from './components/Photos';
-import CornerImage from '../../components/CornerImage/CornerImage';
+// import CornerImage from '../../components/CornerImage/CornerImage';
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent';
 
 const buttonLogout = () => {
@@ -19,27 +19,29 @@ const buttonLogout = () => {
 
 export default function Dashboard() {
     const [username, setUsername] = useState('')
-    const fetchUser = () => {
-        axios({
-            url: 'api/currentUser',
-            method: 'GET',
-            headers: {
-                "x-access-token": localStorage.getItem('x-access-token')
-            }
-        })
-            .then((response) => {
-                setUsername(response.data.username)
+    useEffect(() => {
+        const fetchUser = () => {
+            axios({
+                url: 'api/currentUser',
+                method: 'GET',
+                headers: {
+                    "x-access-token": localStorage.getItem('x-access-token')
+                }
             })
-            .catch((error) => {
-                console.log(error, 'Not logged in')
-            })
-    }
-    useEffect(() => fetchUser(), [])
+                .then((response) => {
+                    setUsername(response.data.username)
+                })
+                .catch((error) => {
+                    console.log(error, 'Not logged in')
+                })
+        }
+        fetchUser()
+    }, [username])
 
     return (
         <div className="dashboard-container">
             <div className="dashboard-top">
-                <CornerImage />
+                {/* <CornerImage /> */}
                 <div className="dashboard-title">Good day {username}</div>
                 <ButtonComponent onClick={buttonLogout} text="Logout" />
             </div>
