@@ -50,9 +50,9 @@ export default function PhotosPage() {
                 console.log(error, 'Not logged in to get photos')
             })
     }
-    const deletePhoto = (id) => {
-        console.log('DELETE id', id)
-    }
+    // const deletePhoto = (id) => {
+    //     console.log('DELETE id', id)
+    // }
 
     return (
         <div className="photos-page-container">

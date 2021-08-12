@@ -53,7 +53,7 @@ export default function Signup() {
                         <InputComponent type="password" value={confirmPassword} placeholder="Confirm password" onChange={e => setConfirmPassword(e.target.value)} />
                     </div>
                 </div>
-                {confirmPassword !== state.password && <div>Please confirm password</div>}
+                {/* {confirmPassword !== state.password && <div>Please confirm password</div>} */}
             </div>
             <ButtonComponent text="Register" onClick={submit} />
         </div>
