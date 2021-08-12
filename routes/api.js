@@ -47,7 +47,6 @@ router.get('/currentUser', [middleware.authJwt.verifyToken], (req, res) => {
 });
 
 router.put('/currentUser', [middleware.authJwt.verifyToken], (req, res) => {
-    console.log('body',req.body.winning_team)
     let token = req.headers["x-access-token"];
     const decoded = jwt.verify(token, config.secret);
     User.findByIdAndUpdate(decoded.id, {winning_team: req.body.winning_team})
@@ -137,7 +136,6 @@ router.put('/todos', [middleware.authJwt.verifyToken], (req, res) => {
         })
 });
 router.delete('/todos', [middleware.authJwt.verifyToken], (req, res) => {
-    console.log('body',req.body._id)
     Todos.findByIdAndRemove(req.body._id)
         .then((data) => {
             res.json(data)
@@ -153,7 +151,6 @@ router.get(
     (req, res) => {
     Photos.find({ owner_id: req.userId })
         .then((data) => {
-            console.log('photo Data: ', data)
             res.json(data)
         })
         .catch((error) => {

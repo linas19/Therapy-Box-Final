@@ -38,7 +38,6 @@ export default function Clothes() {
     }
     const createChart =
         (data) => {
-            console.log('data:', data)
             const counts = {};
             data.forEach((x) => { counts[x] = (counts[x] || 0) + 1; });
             let result = data.map(a => a.clothe);

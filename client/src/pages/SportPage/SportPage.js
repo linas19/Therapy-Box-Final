@@ -59,7 +59,7 @@ export default function SportPage() {
             }
         })
             .then(() => {
-                console.log('sending senected team')
+                console.log('sending selected team')
             })
             .catch(() => {
                 console.log('Todo data not sent')

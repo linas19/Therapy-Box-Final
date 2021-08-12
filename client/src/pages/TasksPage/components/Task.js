@@ -3,11 +3,9 @@ import axios from 'axios';
 import './Task.css'
 
 export default function Task({ task }) {
-    console.log(task)
     const id = task._id
     const [title, setTitle] = useState(task.title)
     const [isChecked, setIsChecked] = useState(task.is_completed)
-    // const [deleting, setDeleting] = useState(false)
 
     useEffect(() => {
 
@@ -25,7 +23,7 @@ export default function Task({ task }) {
                 }
             })
                 .then(() => {
-                    console.log("Updated todo")
+                    console.log("Todo")
                 })
                 .catch(() => {
                     console.log('Todo data not sent')
