@@ -12,10 +12,23 @@ const userState = {
 }
 
 export default function Signup() {
+    const [selectedFile, setSelectedFile] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState('')
     const [state, setState] = useState(userState);
+    const [imageState, setImageState] = useState({})
     const resetUserInputs = () => {
         setState(userState)
+    }
+    const handleFileInput = async (e) => {
+        console.log(e.target.files)
+        setImageState({file: URL.createObjectURL(e.target.files[0])})
+        setSelectedFile(e.target.files[0]);
+        await handleUpload(selectedFile)
+    }
+
+    const handleUpload = (file) => {
+        const formData = new FormData();
+        formData.append('image', file);
     }
     const [signupSuccess, setsignupSuccess] = useState()
     const submit = (e) => {
@@ -59,9 +72,11 @@ export default function Signup() {
                 </div>
                 {confirmPassword !== state.password && <div>Please confirm password</div>}
             </div>
-            <AddPictureComponent text="Add picture" />
+            <AddPictureComponent text="Add picture" onChange={handleFileInput}/>
+            {selectedFile !== null && <button onClick={() => handleUpload(selectedFile)}>Upload image</button>}
             <ButtonComponent text="Register" onClick={submit} />
             {signupSuccess && <div>Signed up Successfully</div>}
+            <img src={imageState.file} />
             {/* {!signupSuccess && <div>Signed up Incomplete.</div>} */}
         </div>
     )
