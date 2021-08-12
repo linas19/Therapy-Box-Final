@@ -55,7 +55,6 @@ export default function Clothes() {
         const fetchData = () => {
             axios.get('/api/clothes')
                 .then(res => {
-                    console.log('resL', res.data.payload)
                     createChart(res.data.payload)
                 })
                 .catch(err => {

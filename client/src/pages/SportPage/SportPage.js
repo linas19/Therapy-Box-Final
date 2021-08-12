@@ -73,7 +73,6 @@ export default function SportPage() {
                 
                 <ButtonComponent text="Click to follow team" onClick={updateUserWinningTeam} />
             </div>
-            {/* {loading && <div>Loading...</div>} */}
 
             {losingTeamState.length === 0 && <div>Enter a correct team name to get data on the team!</div>}
             {losingTeamState.length !== 0 &&
